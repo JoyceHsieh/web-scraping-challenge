@@ -14,7 +14,6 @@ def home():
 
     # Find one record of data from the mongo database
     destination_data = mongo.db.mars.find_one()
-
     # Return template and data
     return render_template("index.html", Mars_data=destination_data)
     
@@ -24,11 +23,10 @@ def home():
 def scrape():
 
     # Run the scrape function and save the results to a variable
-    Mars=mongo.db.mars
+    mars_data= scrape_mars.scrape()
+    mongo.db.mars.update({}, mars_data, upsert=True)
 
     # Update the Mongo database using update and upsert=True
-    mars_data= scrape_mars.scrape()
-    Mars.update({}, mars_data, upsert=True)
 
     # Redirect back to home page
     return redirect("/")

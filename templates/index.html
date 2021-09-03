@@ -40,75 +40,39 @@
         <div class="col-md-5">
 
           <h4><b>Mars Facts</b></h4>
-          <table>{{Mars_data.table}}</table>
+          <table class="table-primary">
+          {{Mars_data.table|safe}}
+        </table>
         </div>
       </div>
-
 
       <div class="row">
-        <div class="col-md-12">
-          <h2 class="heading" style="text-align: center;">
-            <b>Mars Hemispheres</b>
-          </h2>
-          <hr />
-          <div class="col-md-3">
-            <div
-              class="card"
-              style="border-style: solid; border-color: lightgray; padding: 1rem;"
-            >
-              <img
-                src="{{Mars_data.hemisphere_image[0]['img_url']}}"
-                alt="Cerberus"
-                style="height: 100%; width: 100%; object-fit: contain"
-              />
-              <h4><b>{{Mars_data.hemisphere_image[0]['title']}}</b></h4>
+        <div class="col-md-12"></div>
+        <h2 class="heading" style="text-align: center;">
+          <b>Mars Hemispheres</b>
+        </h2>
+        <hr />
+          {% for hemisphere in Mars_data.hemisphere_image %}
+
+            <div class="col-md-3">
+              <div
+                class="card"
+                style="border-style: solid; border-color: lightgray; padding: 1rem;"
+              >
+                <img
+                  src="{{hemisphere.img_url}}"
+                  alt="Cerberus"
+                  style="height: 100%; width: 100%; object-fit: contain"
+                />
+                <h4><b>{{hemisphere.title}}</b></h4>
+              </div>
             </div>
+
+
+          {% endfor %}
           </div>
-          <div class="col-md-3">
-            <div
-              class="card"
-              style="border-style: solid; border-color: lightgray; padding: 1rem;"
-            >
-              <img
-                src="{{Mars_data.hemisphere_image[1]['img_url']}}"
-                alt="Schiaparelli"
-                style="height: 100%; width: 100%; object-fit: contain"
-              />
-              <h4><b>{{Mars_data.hemisphere_image[1]['title']}}</b></h4>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div
-              class="card"
-              style="border-style: solid; border-color: lightgray; padding: 1rem;"
-            >
-              <img
-                src="{{Mars_data.hemisphere_image[2]['img_url']}}"
-                alt="Sytis Major"
-                style="height: 100%; width: 100%; object-fit: contain"
-              />
-              <h4><b>{{Mars_data.hemisphere_image[2]['title']}}</b></h4>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div
-              class="card"
-              style="border-style: solid; border-color: lightgray; padding: 1rem;"
-            >
-              <img
-                src="{{Mars_data.hemisphere_image[3]['img_url']}}"
-                alt="Valles Marineris"
-                style="height: 100%; width: 100%; object-fit: contain"
-              />
-              <h4><b>{{Mars_data.hemisphere_image[3]['title']}}</b></h4>
-            </div>
-          </div>
-        </div>
       </div>
-
-      
-
-
+    
 
     </div>
   </body>
